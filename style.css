@@ -1,0 +1,100 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --cellSize: 100px;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 10vh;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bolder;
+  font-size: 3rem;
+}
+.board {
+  width: 100vw;
+  height: 66vh;
+  display: grid;
+  place-content: center;
+  place-items: center;
+  grid-template-columns: repeat(3, auto);
+}
+.cell {
+  width: var(--cellSize);
+  height: var(--cellSize);
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
+
+.cell:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.cell:nth-child(3n + 3) {
+  border-right: none;
+}
+
+.cell:last-child,
+.cell:nth-child(7),
+.cell:nth-child(8) {
+  border-bottom: none;
+}
+
+.cell.x,
+.cell.circle {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bolder;
+  font-size: 2rem;
+  cursor: not-allowed;
+}
+
+.winMsg {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 4rem;
+}
+
+.winMsg.show {
+  display: flex;
+}
+.restartBtn {
+  font-size: 2rem;
+  padding: 0.5rem;
+  border: 2px black solid;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.restartBtn:hover {
+  background-color: black;
+  border-color: white;
+  color: white;
+}
